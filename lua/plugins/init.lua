@@ -23,6 +23,16 @@ return {
     },
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    enabled = true
+  },
+  {
+    "tpope/vim-fugitive",
+    enabled = true,
+    lazy = false
+  }
+
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   config = function()

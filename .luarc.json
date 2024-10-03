@@ -1,0 +1,10 @@
+{
+    "workspace.library": [
+        "/home/yan/tools/nvim/share/nvim/runtime/lua",
+        "/home/yan/tools/nvim/share/nvim/runtime/lua/vim/lsp",
+        "/home/yan/.local/share/nvim/lazy/ui/nvchad_types",
+        "/home/yan/.local/share/nvim/lazy/lazy.nvim/lua/lazy",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ]
+}
