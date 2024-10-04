@@ -22,7 +22,10 @@ return {
       },
     },
   },
-
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   extensions = { "project" }
+  -- },
   {
     "lewis6991/gitsigns.nvim",
     enabled = true
@@ -31,14 +34,5 @@ return {
     "tpope/vim-fugitive",
     enabled = true,
     lazy = false
-  }
-
-  -- {
-  --   "loctvl842/monokai-pro.nvim",
-  --   config = function()
-  --     require("monokai-pro").setup({
-  --       filter="machine"
-  --     })
-  --   end
-  -- }
+  },
 }
