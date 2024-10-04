@@ -22,10 +22,23 @@ return {
       },
     },
   },
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   extensions = { "project" }
-  -- },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function(_, conf)
+      conf.filters = { custom = { "^.git$" } }
+      return conf
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, conf)
+      -- require 'telescope'.load_extension('project')
+      -- conf.load_extension("project")
+      -- conf.extensions = { "project" }
+      return conf
+    end
+    -- extensions = { "project" }
+  },
   {
     "lewis6991/gitsigns.nvim",
     enabled = true
