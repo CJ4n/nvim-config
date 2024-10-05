@@ -32,6 +32,28 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 require "configs.nvim-tree"
+-- local dap = require('dap')
+
+-- vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
+-- dap.configurations.python = {
+--   {
+--     type = 'python',
+--     request = 'launch',
+--     name = "Run autograder.py",
+--     program = "${workspaceFolder}/autograder.py",
+--     cwd = "${workspaceFolder}",
+--     pythonPath = function()
+--       -- Adjust this path to your Python interpreter if needed
+--       return 'python'
+--     end,
+--   },
+-- }
+-- Set the root directory for your project
+-- vim.api.nvim_command([[
+--   autocmd FileType python lua require('dap.ext.autocompl').attach()
+--   autocmd FileType python lua vim.fn.setenv("PYTHONPATH", vim.fn.expand("~/yan_files/1_semester/fundam/labs/p1"))
+-- ]])
+
 vim.schedule(function()
   require "mappings"
 end)
