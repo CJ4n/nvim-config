@@ -48,4 +48,11 @@ return {
     enabled = true,
     lazy = false
   },
+  -- TODO: s
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    opts = {}
+  }
 }
