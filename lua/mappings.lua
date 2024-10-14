@@ -25,7 +25,7 @@ vim.keymap.set('n', '<F5>', dap.continue)
 --   end
 --   require("dap").continue()
 -- end)
-vim.keymap.set('n', '<F10>', dap.step_over)
+vim.keymap.set('n', '<F9>', dap.step_over)
 vim.keymap.set('n', '<F11>', dap.step_into)
 vim.keymap.set('n', '<F12>', dap.step_out)
 vim.keymap.del("n", "<leader>b")

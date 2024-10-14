@@ -4,15 +4,12 @@ return {
     event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -29,16 +26,12 @@ return {
       return conf
     end,
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    opts = function(_, conf)
-      -- require 'telescope'.load_extension('project')
-      -- conf.load_extension("project")
-      -- conf.extensions = { "project" }
-      return conf
-    end
-    -- extensions = { "project" }
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   opts = function(_, conf)
+  --     return conf
+  --   end
+  -- },
   {
     "lewis6991/gitsigns.nvim",
     enabled = true
@@ -63,17 +56,16 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "mfussenegger/nvim-dap-python",
     },
-    lazy = false,
+    lazy = true,
     config = function()
       require("dapui").setup()
-      require("dap-python").setup("../.venv/bin/python")
+      require("dap-python").setup(".venv/bin/python")
       require("dap-go").setup()
       -- require("nvim-nio").setup()
       require("nvim-dap-virtual-text").setup()
       require('dap.ext.vscode').load_launchjs(nil, { debugby = { 'py' } })
       -- TODO: this is too slow i guess i just need to use one main config...
       local dap, dapui = require("dap"), require("dapui")
-
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
@@ -101,8 +93,7 @@ return {
       -- },
       -- }
     end,
-    opts = {
-
-    }
-  }
+    opts = {}
+  },
+  { "tpope/vim-obsession" }
 }
