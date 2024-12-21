@@ -10,7 +10,7 @@ vim.keymap.del("n", "<leader>n")
 vim.keymap.del("n", "<leader>rn")
 vim.keymap.del("n", "<leader>h")
 vim.keymap.del("n", "<leader>v")
--- vim.keymap.set("n", "<leader>ps", "<cmd>Telescope projects<CR>")
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- vim.keymap.del("n", "<leader>b")
@@ -18,6 +18,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 local dap = require("dap")
 -- TODO: step over etc not working as terminal intercepts them...
 vim.keymap.set('n', '<F5>', dap.continue)
+vim.keymap.set('n', '<leader><F5>', dap.run_last)
+vim.keymap.set('n', '<F4>', dap.terminate)
 -- vim.keymap.set('n', '<F5>', function()
 --   -- (Re-)reads launch.json if present
 --   if vim.fn.filereadable(".vscode/launch.json") then

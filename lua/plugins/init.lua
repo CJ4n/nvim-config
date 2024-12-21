@@ -59,11 +59,11 @@ return {
     lazy = true,
     config = function()
       require("dapui").setup()
-      require("dap-python").setup(".venv/bin/python")
+      require("dap-python").setup("python")
       require("dap-go").setup()
       -- require("nvim-nio").setup()
       require("nvim-dap-virtual-text").setup()
-      require('dap.ext.vscode').load_launchjs(nil, { debugby = { 'py' } })
+      -- require('dap.ext.vscode').load_launchjs(nil, { debugby = { 'py' } })
       -- TODO: this is too slow i guess i just need to use one main config...
       local dap, dapui = require("dap"), require("dapui")
 
@@ -95,5 +95,5 @@ return {
     end,
     opts = {}
   },
-  { "tpope/vim-obsession" }
+  -- { "tpope/vim-obsession" }
 }
