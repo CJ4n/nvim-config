@@ -32,3 +32,9 @@ vim.keymap.set('n', '<F11>', dap.step_into)
 vim.keymap.set('n', '<F12>', dap.step_out)
 vim.keymap.del("n", "<leader>b")
 vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
+
+-- This maps space-hr to revert/undo the git hunk under your cursor
+vim.keymap.set('n', '<space>hr', ':Gitsigns reset_hunk<CR>', { noremap = true, silent = true })
+
+-- This lets you revert specific lines you've selected in visual mode
+vim.keymap.set('v', '<space>hr', ':Gitsigns reset_hunk<CR>', { noremap = true, silent = true })
