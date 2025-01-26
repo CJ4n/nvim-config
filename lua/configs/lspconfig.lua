@@ -1,13 +1,10 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
-
--- EXAMPLE
-local servers = { "html", "cssls", "hls", "ruff", "pyright", "gopls" }
+local util = require "lspconfig/util"
+local servers = { "html", "cssls", "hls", "ruff", "pyright", "gopls", "templ" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
--- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = nvlsp.on_attach,
@@ -16,9 +13,58 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+
+lspconfig.html.setup {
+  filetypes = { "html", "gotmpl" },
+  cmd = { "vscode-html-language-server", "--stdio" },
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true,
+      -- go = true,
+    },
+    provideFormatter = true,
+  },
+  settings = {
+    html = {
+      format = {
+        templating = true,
+        wrapLineLength = 120,
+        indentInnerHtml = true,
+      },
+      validate = {
+        scripts = true,
+        styles = true,
+        templating = true,
+      },
+    },
+  },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
+lspconfig.gopls.setup {
+  filetypes = { "go", "html" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      templateExtensions = { "html", "tmpl", "gotmpl" },
+      analyses = {
+        templatecheck = true,
+        shadow = true,
+      },
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        constantValues = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
