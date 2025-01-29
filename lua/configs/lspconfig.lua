@@ -13,9 +13,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
 lspconfig.html.setup {
-  filetypes = { "html", "gotmpl" },
+  filetypes = { "html", "tmpl" },
   cmd = { "vscode-html-language-server", "--stdio" },
   init_options = {
     configurationSection = { "html", "css", "javascript" },
@@ -46,7 +45,7 @@ lspconfig.html.setup {
 }
 
 lspconfig.gopls.setup {
-  filetypes = { "go", "html" },
+  filetypes = { "go", "html", "tmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {

@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre',
+    event = "BufWritePre",
     opts = require "configs.conform",
   },
   {
@@ -14,47 +14,53 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css", "go", "gotmpl", "javascript"
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "go",
+        "gotmpl",
+        "javascript",
       },
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = {
           "html",
-          "gotmpl"
+          "tmpl",
         },
       },
       parser_config = {
         html = {
-          used_by = { "gotmpl", "html" }
-        }
+          used_by = { "tmpl", "html" },
+        },
       },
       injections = {
-        enable = true
-      }
+        enable = true,
+      },
     },
   },
   {
     "nvim-tree/nvim-tree.lua",
     opts = function(_, conf)
-      conf.filters = { custom = { "^.git$" } }
+      conf.filters = { custom = { "^.git$", "^node_modules$" } }
       return conf
     end,
   },
   {
     "lewis6991/gitsigns.nvim",
-    enabled = true
+    enabled = true,
   },
   {
     "tpope/vim-fugitive",
     enabled = true,
-    lazy = false
+    lazy = false,
   },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
-    opts = {}
+    opts = {},
   },
   {
     "mfussenegger/nvim-dap",
@@ -68,13 +74,13 @@ return {
     lazy = true,
     config = function()
       require("dapui").setup()
-      require("dap-python").setup("python")
+      require("dap-python").setup "python"
       require("dap-go").setup()
       -- require("nvim-nio").setup()
       require("nvim-dap-virtual-text").setup()
       -- require('dap.ext.vscode').load_launchjs(nil, { debugby = { 'py' } })
       -- TODO: this is too slow i guess i just need to use one main config...
-      local dap, dapui = require("dap"), require("dapui")
+      local dap, dapui = require "dap", require "dapui"
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
@@ -102,7 +108,7 @@ return {
       -- },
       -- }
     end,
-    opts = {}
+    opts = {},
   },
   {
     "windwp/nvim-ts-autotag",
@@ -112,5 +118,5 @@ return {
       enable_rename = true,
       enable_close_on_slash = false,
     },
-  }
+  },
 }
