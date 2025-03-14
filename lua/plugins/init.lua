@@ -43,7 +43,13 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = function(_, conf)
-      conf.filters = { custom = { "^.git$", "^node_modules$" } }
+      conf.filters = {
+        custom = {
+          "^.git$",
+          "^node_modules$",
+          "^views/.+%.go$",
+        },
+      }
       return conf
     end,
   },
