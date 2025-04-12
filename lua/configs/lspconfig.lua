@@ -2,7 +2,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
-local servers = { "html", "cssls", "hls", "ruff", "pyright", "gopls", "templ" }
+local servers = { "html", "cssls", "hls", "pyright", "ruff", "gopls", "templ" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 for _, lsp in ipairs(servers) do
@@ -12,6 +12,32 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.ruff.setup {
+  init_options = {
+    settings = {
+      -- Add any extra CLI arguments for Ruff here
+      args = {},
+    },
+  },
+  on_attach = function(client, bufnr)
+    client.server_capabilities.hoverProvider = false
+  end,
+}
+require("lspconfig").pyright.setup {
+  settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        -- ignore = { "*" },
+      },
+    },
+  },
+}
 
 lspconfig.html.setup {
   filetypes = { "html", "tmpl" },

@@ -40,5 +40,5 @@ vim.keymap.set("n", "<space>hr", ":Gitsigns reset_hunk<CR>", { noremap = true, s
 vim.keymap.set("v", "<space>hr", ":Gitsigns reset_hunk<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<CR>")
-
-vim.keymap.set("n", "<C-w>", "<cmd>q<CR>")
+--
+-- vim.keymap.set("n", "<C-w>", "<cmd>q<CR>")

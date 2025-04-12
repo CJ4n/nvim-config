@@ -47,7 +47,8 @@ return {
         custom = {
           "^.git$",
           "^node_modules$",
-          "^views/.+%.go$",
+          -- "^views/.+%.go$",
+          "^__pycache__$",
         },
       }
       return conf
