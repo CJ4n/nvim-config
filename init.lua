@@ -35,55 +35,10 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 require "configs.nvim-tree"
--- local dap = require('dap')
-
--- vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
--- dap.configurations.python = {
---   {
---     type = 'python',
---     request = 'launch',
---     name = "Run autograder.py",
---     program = "${workspaceFolder}/autograder.py",
---     cwd = "${workspaceFolder}",
---     pythonPath = function()
---       -- Adjust this path to your Python interpreter if needed
---       return 'python'
---     end,
---   },
--- }
--- Set the root directory for your project
--- vim.api.nvim_command([[
---   autocmd FileType python lua require('dap.ext.autocompl').attach()
---   autocmd FileType python lua vim.fn.setenv("PYTHONPATH", vim.fn.expand("~/yan_files/1_semester/fundam/labs/p1"))
--- ]])
 
 vim.schedule(function()
   require "mappings"
 end)
-
-vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
-
-vim.fn.sign_define("DapBreakpoint", {
-  text = "🔴",
-  texthl = "DapBreakpoint",
-  linehl = "DapBreakpoint",
-  numhl = "DapBreakpoint",
-})
-vim.fn.sign_define(
-  "DapBreakpointCondition",
-  { text = "ﳁ", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-)
-vim.fn.sign_define(
-  "DapBreakpointRejected",
-  { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-)
-vim.fn.sign_define(
-  "DapLogPoint",
-  { text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
-)
-vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

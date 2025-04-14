@@ -70,54 +70,6 @@ return {
     opts = {},
   },
   {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      "leoluz/nvim-dap-go",
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-      "theHamsta/nvim-dap-virtual-text",
-      "mfussenegger/nvim-dap-python",
-    },
-    lazy = true,
-    config = function()
-      require("dapui").setup()
-      require("dap-python").setup "python"
-      require("dap-go").setup()
-      -- require("nvim-nio").setup()
-      require("nvim-dap-virtual-text").setup()
-      -- require('dap.ext.vscode').load_launchjs(nil, { debugby = { 'py' } })
-      -- TODO: this is too slow i guess i just need to use one main config...
-      local dap, dapui = require "dap", require "dapui"
-
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-
-      -- dap.configurations.python = {
-      -- {
-      --   type = 'python',
-      --   request = 'launch',
-      --   name = "Run autograder.py",
-      --   program = "${workspaceFolder}/autograder.py",
-      --   cwd = "${workspaceFolder}",
-      --   pythonpath = function()
-      --     return '../.venv/bin/python'
-      --   end,
-      -- },
-      -- }
-    end,
-    opts = {},
-  },
-  {
     "windwp/nvim-ts-autotag",
     lazy = false,
     opts = {
